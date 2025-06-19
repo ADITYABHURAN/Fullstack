@@ -12,5 +12,11 @@
     "url": "Full-stack"
   },
   "author": "Aditya Shyamsundar Bhuran",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
