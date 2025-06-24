@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    password: String // You can add more fields as per your requirements
+    password: String, // You can add more fields as per your requirements
     role: {
         type: String,
         enum: ['admin', 'user'], // Define roles as per your requirements
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpires: {
         type: Date,
     }
-} {
+}, {
     timestamps: true // Automatically manage createdAt and updatedAt fields 
 }) 
 
