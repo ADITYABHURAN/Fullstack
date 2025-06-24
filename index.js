@@ -2,6 +2,9 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import db from './utils/db.js'
+//import all routes here
+import userRoutes from './routes/user.routes.js'
+
 
 dotenv.config()
 
@@ -35,6 +38,9 @@ app.get('/Anup', (req, res) => {
 
 // Connect to MongoDB
 db();
+
+//user routes
+app.use("/api/v1/user/", userRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
