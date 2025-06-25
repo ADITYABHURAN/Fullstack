@@ -67,9 +67,6 @@ const mailOptions = ({
     message: "User Has been registered Successfully",
     success: true, 
   });
-
-
-
  } catch (error) {
    res.status(400).json({
     message: "User Not registered",
@@ -77,9 +74,14 @@ const mailOptions = ({
     success: false, 
   });
 
-}
- 
-  
+} 
 };
+
+
+const verifyUser = async (req, res) => {
+ 
+
+
+}
 
 export { registerUser };
