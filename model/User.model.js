@@ -1,30 +1,33 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     name: String,
     email: String,
-    password: String, // You can add more fields as per your requirements
+    password: String,
     role: {
-        type: String,
-        enum: ['admin', 'user'], // Define roles as per your requirements
-        default: 'user' // Default role is user
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
     isVerified: {
-        type: Boolean,
-        default: false // Default is not verified
+      type: Boolean,
+      default: false,
     },
-    VerificationToken: {
-        type: String,
+    verificationToken: {
+      type: String,
     },
     resetPasswordToken: {
-        type: String,
+      type: String,
     },
     resetPasswordExpires: {
-        type: Date,
-    }
-}, {
-    timestamps: true // Automatically manage createdAt and updatedAt fields 
-}) 
+      type: Date,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const User = mongoose.model("User", userSchema);
 
