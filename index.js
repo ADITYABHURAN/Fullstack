@@ -4,7 +4,7 @@ import cors from 'cors'
 import db from './utils/db.js'
 //import all routes here
 import userRoutes from './routes/user.routes.js'
-
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -18,8 +18,14 @@ app.use(
     allowedHeaders : ['Content-Type', 'Authorization'] 
   })
 );
+
+
 app.use(express.json()); // to get .json type data from frontend to backend.
 app.use(express.urlencoded({extended:true})) //it helps with your url issues like space between etc.
+app.use(cookieParser()); //to parse cookies from the request object
+
+
+
 
 const port = process.env.PORT || 4000;
 
