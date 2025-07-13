@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
   res.send('Cohort!');
 })
 
+app.post('/', (req, res) => {
+  res.send('POST request received at /');
+});
+
 app.get('/Aditya', (req, res) => {
   res.send('Aditya!');
 })
