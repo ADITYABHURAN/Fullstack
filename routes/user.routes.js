@@ -1,16 +1,18 @@
 import express from "express";
-import { login, 
+import { login,
          registerUser,
          verifyUser 
          } from "../controller/user.controller.js";
 
 
-const router = express.Router();
+    const router = express.Router();
+ 
 
-
-router.post("/register", registerUser); 
-router.get("/verify/:token", verifyUser); 
-router.post("/login", login); 
+    router.post("/register", registerUser); 
+    router.get("/verify/:token", verifyUser);
+    router.post("/login", login);
+    //check if the user is logged in
+    router.post("/me", isLoggedIn, getMe);
 
 
 export default router; 

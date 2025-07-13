@@ -139,8 +139,10 @@ const login = async (req, res) => {
 
     const token = jwt.sign({id: user._id, role: user.role},
 
-      "shhhh", {
-        expiresIn: "1d" //token will expire in 1 day
+      process.env.JWT_SECRET,
+
+      {
+        expiresIn: process.env.JWT_EXPIRES_IN
       }
     );
     const cookieOptions = {
@@ -169,6 +171,45 @@ const login = async (req, res) => {
     
   }
 }
+// This function can be used to get the logged in user details
+const getMe = async (req, res) => {
+  try {
 
+  } catch (error) {
 
-export { registerUser, verifyUser, login }; //export functions
+  }
+}
+  // This function can be used to get the logged in user details
+const logoutUser = async (req, res) => {
+  try {
+
+  } catch (error) {
+    
+  }
+}
+  // This function can be used to reset the password
+const forgetPassword = async (req, res) => {
+  try {
+
+  } catch (error) {
+    
+  }
+}
+  // This function can be used to reset the password
+const logoutUser = async (req, res) => {
+  try {
+
+  } catch (error) {
+    
+  }
+}
+  // This function can be used to reset the password
+const resetPassword = async (req, res) => {
+  try {
+
+  } catch (error) {
+    
+  }
+}
+
+export { registerUser, verifyUser, login, logoutUser, getMe, forgetPassword, resetPassword }; //export functions
