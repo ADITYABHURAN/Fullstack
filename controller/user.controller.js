@@ -7,6 +7,14 @@ import jwt from "jsonwebtoken";
 
 
 const registerUser = async (req, res) => {
+//get data
+//validate
+//check if user already exists
+//create user
+//generate verification token
+//save token in database
+//send token as email to user
+//send success status to user 
 
   const { name, email, password } = req.body; //get data 
 
@@ -16,7 +24,7 @@ const registerUser = async (req, res) => {
         message: "All fields are required" 
     });
   }
-
+// Check if user already exists we use try-catch
   try {
    const existinguser = await User.findOne({ email })
    if (existinguser) {
@@ -48,7 +56,7 @@ const registerUser = async (req, res) => {
     // Send verification email (this part is not implemented in this example)
   const transporter = nodemailer.createTransport({
     host: process.env.MAILTRAP_HOST,
-    port: process.env.MAILTRAP_HOST,
+    port: process.env.MAILTRAP_PORT,
     secure: false, // true for 465, false for other ports
     auth: {
     user: process.env.MAILTRAP_USERNAME,
@@ -57,12 +65,12 @@ const registerUser = async (req, res) => {
 });
    
 const mailOptions = ({ 
-   from: process.env.MAILTRAP_SENDER_EMAIL,
+    from: process.env.MAILTRAP_SENDEREMAIL,
     to: user.email, // list of receivers
     subject: "Verify your email", // Subject line
     text: `Please click on the following link: 
      ${process.env.BASE_URL}/api/v1/user/verify/${token}`,
-   
+    
   });
 
   await transporter.sendMail(mailOptions)
@@ -117,7 +125,7 @@ const login = async (req, res) => {
         message: "invalid email or password"
       });
     }
-
+  
     //now to check password we will use bcrypt
     const isMatch = await bcrypt.compare(password, user.password)
 
@@ -125,7 +133,7 @@ const login = async (req, res) => {
 
     if (!isMatch) { //if password not match
       return res.status(400).json({
-        message: "invalid email or password"
+        message: "invalid email or password",
       });
     }
 
