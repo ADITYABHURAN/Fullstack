@@ -174,7 +174,13 @@ const login = async (req, res) => {
 // This function can be used to get the logged in user details
 const getMe = async (req, res) => {
   try {
-    console.log("reached at profile level");
+    const user = await User.findById(req.user.id).select('-password'); //get user from database using id from token
+    if(!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
   } catch (error) {
 
   }
@@ -187,21 +193,43 @@ const forgetPassword = async (req, res) => {
     
   }
 }
-  // This function can be used to reset the password
+  // This function can be used to logout the user
 const logoutUser = async (req, res) => {
   try {
+    //logout krne ke liye ccokies nikal do 
+    res.cookie('token', '')
+    expires: new Date(0), //set cookie to expire immediately
+    res.status(200).json({
+      message: "User logged out successfully",
+      success: true,
+    });
 
   } catch (error) {
     
   }
 }
   // This function can be used to reset the password
-const resetPassword = async (req, res) => {
-  try {
+const resetPassword = async (req, res) => {  try {
+    //collect token from params
+    const { token } = req.params; 
+    //get password from req.body
+    const { password } = req.body;
 
+    try {
+      const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() } //check if token is valid
+      })
+    }
+    //set password in user
+    //reset token and expires 
+    //save 
   } catch (error) {
     
   }
-}
 
+} catch (error) {} 
+
+ } 
+ 
 export { registerUser, verifyUser, login, logoutUser, getMe, forgetPassword, resetPassword }; //export functions
