@@ -230,6 +230,6 @@ const resetPassword = async (req, res) => {  try {
 
 } catch (error) {} 
 
- } 
+} 
  
 export { registerUser, verifyUser, login, logoutUser, getMe, forgetPassword, resetPassword }; //export functions
