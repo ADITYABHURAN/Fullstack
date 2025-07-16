@@ -174,17 +174,9 @@ const login = async (req, res) => {
 // This function can be used to get the logged in user details
 const getMe = async (req, res) => {
   try {
-
+    console.log("reached at profile level");
   } catch (error) {
 
-  }
-}
-  // This function can be used to get the logged in user details
-const logoutUser = async (req, res) => {
-  try {
-
-  } catch (error) {
-    
   }
 }
   // This function can be used to reset the password
