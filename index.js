@@ -5,7 +5,7 @@ import db from './utils/db.js'
 //import all routes here
 import userRoutes from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
-
+//git commit 
 dotenv.config()
 
 const app = express()
